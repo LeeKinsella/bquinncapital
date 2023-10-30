@@ -1,0 +1,10 @@
+### IntelliJ files
+.idea/
+.idea/*
+
+### Log files
+error_log
+
+### PHP plugins
+vendor
+composer.lock

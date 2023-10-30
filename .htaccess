@@ -1,0 +1,40 @@
+Options +ExecCGI +FollowSymLinks
+
+AddHandler application/x-httpd-lsphp .html
+AddHandler application/x-httpd-lsphp .shtml
+
+RewriteEngine On
+
+# Add www. to the beginning of the request
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirect all http:// to https://
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]{2,4}
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.*)$ $1.html
+
+#RewriteCond %{REQUEST_URI} ^/home.html
+#RewriteRule ^(.*)home.html$ https://www.legacyhousetitle.com/$1 [R=301,L]
+
+# Remove trailing slash
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+#RewriteRule ^about-us/meet-the-team.html https://www.legacyhousetitle.com/meet-the-team.html [R=301,L]
+
+Header always set Content-Security-Policy "upgrade-insecure-requests;"
+
+<filesMatch ".(js|mp4|pdf|jpg|png|svg|woff2|jpeg|css|min.js|map|gif|swf|ico|less)$">
+    Header set Cache-Control "max-age=2628000,stale-while-revalidate=43200,stale-if-error=43200,public,immutable" "expr=%{REQUEST_STATUS} < 400"
+    Header set Age 0
+</filesMatch>
+
+<filesMatch ".(json)$">
+    Header set Cache-Control "max-age=43200,stale-while-revalidate=43200,stale-if-error=43200,public" "expr=%{REQUEST_STATUS} < 400"
+    Header set Age 0
+</filesMatch>

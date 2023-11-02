@@ -5,7 +5,7 @@ $(function () {
     $('body').addClass(isTouchDevice ? 'is-touch-device' : '')
         .addClass(isTouchDevice ? (navigator.userAgent.match(/iPad/g) ? 'is-tablet' : 'is-mobile') : '');
 
-    fetch('header.html')
+    fetch('https://leekinsella.github.io/bquinncapital/header.html')
         .then(response => {
             return response.text();
         })
@@ -18,7 +18,7 @@ $(function () {
             setLink('.header-container');
         });
 
-    fetch('footer.html')
+    fetch('https://leekinsella.github.io/bquinncapital/footer.html')
         .then(response => {
             return response.text();
         })

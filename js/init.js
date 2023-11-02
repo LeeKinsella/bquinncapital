@@ -5,7 +5,7 @@ $(function () {
     $('body').addClass(isTouchDevice ? 'is-touch-device' : '')
         .addClass(isTouchDevice ? (navigator.userAgent.match(/iPad/g) ? 'is-tablet' : 'is-mobile') : '');
 
-    fetch('/header.html')
+    fetch('../header.html')
         .then(response => {
             return response.text();
         })
@@ -18,7 +18,7 @@ $(function () {
             setLink('.header-container');
         });
 
-    fetch('/footer.html')
+    fetch('../footer.html')
         .then(response => {
             return response.text();
         })

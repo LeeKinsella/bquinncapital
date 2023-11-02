@@ -8,3 +8,7 @@ error_log
 ### PHP plugins
 vendor
 composer.lock
+
+### Local testing files
+local-home.html
+local-init.js

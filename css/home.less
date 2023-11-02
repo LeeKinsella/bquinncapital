@@ -1,0 +1,51 @@
+.homepage {
+    .hero {
+        min-height: 28.125rem;
+        height: 100%;
+        padding: 2.5rem 0 3.75rem;
+        h1 {
+            font-size: 2.8125rem;
+            color: #454b57;
+            max-width: 65.625rem;
+            margin: 0 auto;
+        }
+    }
+    .home-tiles {
+        .home-tile {
+            height: 27.5rem;
+            width: 50%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            &.left {
+                background-image: url('/images/inside-black-white-1800x900.jpg');
+            }
+            &.right {
+                background-image: url('/images/group-9.jpg');
+            }
+            &:before {
+                content: '';
+                background-color: #454b57cc;
+                position: absolute;
+                opacity: 0;
+                transition: all 0.3s ease;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: 0;
+            }
+            &:hover {
+                &:before {
+                    opacity: 1;
+                }
+            }
+            h2 {
+                font-size: 2.25rem;
+                max-width: 18.75rem;
+                margin: 0 auto 1.875rem auto;
+                position: relative;
+            }
+        }
+    }
+}
